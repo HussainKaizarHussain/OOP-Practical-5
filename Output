@@ -1,0 +1,24 @@
+--- 1. Demonstrating Single Inheritance (Person -> Student) ---
+[Person Constructor] Initialized base person details.
+[Student Constructor] Initialized student details.
+
+Student Record:
+Name          : Aarav Sharma
+Age           : 20
+Student ID    : S1001
+Course        : B.Tech Computer Science
+
+----------------------------------------
+
+--- 2. Demonstrating Multilevel Inheritance (Person -> Student -> GraduateStudent) ---
+[Person Constructor] Initialized base person details.
+[Student Constructor] Initialized student details.
+[GraduateStudent Constructor] Initialized graduate research details.
+
+Graduate Student Record:
+Name          : Priya Verma
+Age           : 24
+Student ID    : G5002
+Course        : M.Tech AI
+Research Topic: Deep Learning in Healthcare
+Supervisor    : Dr. Ramesh Kumar
