@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Base Class: Person
+class Person {
+protected:
+    string name;
+    int age;
+
+public:
+    Person(string n, int a) : name(n), age(a) {
+        cout << "[Person Constructor] Initialized base person details.\n";
+    }
+
+    void displayPerson() const {
+        cout << "Name          : " << name << "\n";
+        cout << "Age           : " << age << "\n";
+    }
+};
+
+// Derived Class 1: Student (Single Inheritance: Person -> Student)
+class Student : public Person {
+protected:
+    string studentId;
+    string course;
+
+public:
+    Student(string n, int a, string id, string c) : Person(n, a), studentId(id), course(c) {
+        cout << "[Student Constructor] Initialized student details.\n";
+    }
+
+    void displayStudent() const {
+        displayPerson(); // Accessing base class member function
+        cout << "Student ID    : " << studentId << "\n";
+        cout << "Course        : " << course << "\n";
+    }
+};
+
+// Derived Class 2: GraduateStudent (Multilevel Inheritance: Person -> Student -> GraduateStudent)
+class GraduateStudent : public Student {
+private:
+    string researchTopic;
+    string supervisor;
+
+public:
+    GraduateStudent(string n, int a, string id, string c, string topic, string sup)
+        : Student(n, a, id, c), researchTopic(topic), supervisor(sup) {
+        cout << "[GraduateStudent Constructor] Initialized graduate research details.\n";
+    }
+
+    void displayGraduateStudent() const {
+        displayStudent(); // Accessing intermediate derived class member function
+        cout << "Research Topic: " << researchTopic << "\n";
+        cout << "Supervisor    : " << supervisor << "\n";
+    }
+};
+
+int main() {
+    cout << "--- 1. Demonstrating Single Inheritance (Person -> Student) ---\n";
+    Student undergrad("Aarav Sharma", 20, "S1001", "B.Tech Computer Science");
+    cout << "\nStudent Record:\n";
+    undergrad.displayStudent();
+
+    cout << "\n----------------------------------------\n\n";
+
+    cout << "--- 2. Demonstrating Multilevel Inheritance (Person -> Student -> GraduateStudent) ---\n";
+    GraduateStudent postgrad("Priya Verma", 24, "G5002", "M.Tech AI", "Deep Learning in Healthcare", "Dr. Ramesh Kumar");
+    cout << "\nGraduate Student Record:\n";
+    postgrad.displayGraduateStudent();
+
+    return 0;
+}
